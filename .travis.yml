@@ -4,15 +4,15 @@ matrix:
   - os: linux
     sudo: false
     dist: trusty
-    python: "2.7"
+    python: '2.7'
   - os: linux
     sudo: false
     dist: trusty
-    python: "3.4"
+    python: '3.4'
   - os: linux
     sudo: false
     dist: trusty
-    python: "3.5"
+    python: '3.5'
   - os: osx
     language: generic
     env: TRAVIS_PYTHON_VERSION=3.5
@@ -43,3 +43,5 @@ deploy:
   user: danilo.horta
   on:
     branch: master
+  password:
+    secure: fSE6pnl7i1bfP4PgRcNvb9cwESdB+2a0Kxd0GB2FTzqNVReCyXkAxiK2fsRd2rIPBrwGZA8CfpaXNHm3ZMqDXHKY35MXsyo58TX4rqC8c+Um/rhQr6OBfGY+hlM7ZwdPaZMIy8MNZahmIcFkjRhqjHPd5A2QIxG4R7qNwGCzMxF1DmtwPPzvWP0DUS3NR3tKku82109pxYN8fAt+FxOD70EQsaMAwecXmZHsFsGJ+oTZPvkGRvqfhRcVnr9wVMkweD07XegDOF4V+QFpH8+1/xiflBW/Rc6v/vdHCY3413Za6pGuc83GJomDBuNiUYCB5T3gVYmKV3TnxqX4oCmIsuHVUFOdV4pBOrWa5cb07NyOEWTR/0LlXVxjpWcpIFMCHQyb7cb+l+YhtnCovp623jM/4zzD/Zhf0Hd/i3FPz07kgo3C/IlGvxf/esUYTT5n9hT9g+ZpifXCzFwl1f5h/eP94q0CQBfNj7xmuPuQs8qEqqk2gbf8lkI4v70OQV5qczDeczBLlaJQNWaTHn6SvoOqVWFylSjehpISATYfrCfL71QoHdHWr2ktvNUdGmH6ORSYeS9ZwEs1UCKH7o/lUld/W/z5mMua/Hax7cGgrBsrY3cWhmdCCRzGfXCrXLpqoFZJ71rK9gTqp/JGAAnw4UJIdH+JIAFT/pzvC0El2Bg=
