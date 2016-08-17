@@ -1,29 +1,15 @@
 import os
-import sys
 import six
 import string
 from distutils.sysconfig import customize_compiler
 
 from .capi_lib import CApiLib
-
 from setuptools import Command
 
 if hasattr(bytes, 'maketrans'):
     maketrans = bytes.maketrans
 else:
     maketrans = string.maketrans
-
-from setuptools.command.build_ext import build_ext
-
-class _build_ext(build_ext):
-
-    def run(self):
-        self.reinitialize_command('build_capi', inplace=self.inplace,
-                                  build_clib=self.build_lib)
-        self.run_command("build_capi")
-        return build_ext.run(self)
-
-sys.modules['setuptools.command.build_ext'].build_ext = _build_ext
 
 
 def _show_compilers():
