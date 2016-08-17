@@ -1,5 +1,4 @@
 import io
-# import sys
 
 import setuptools
 
@@ -9,8 +8,10 @@ with io.open('README.md', encoding='utf-8') as readme:
 name = 'build_capi'
 description = 'build C/C++ static libraries (compile/link to build directory)'
 
+
 setup_params = dict(
     name=name,
+    version='0.0.1',
     author="Danilo Horta",
     author_email="danilo.horta@gmail.com",
     description=description,
@@ -20,9 +21,9 @@ setup_params = dict(
     ],
     extras_require={
     },
-    setup_requires=[
+    setup_requires=['pytest-runner',
     ],
-    tests_require=[
+    tests_require=['pytest',
     ],
     classifiers=[
         "Development Status :: 3 - Alpha",

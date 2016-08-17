@@ -2,14 +2,6 @@ import os
 import sys
 from setuptools.command.build_ext import build_ext
 
-# class _build_ext(build_ext):
-#
-#     def run(self):
-#         self.reinitialize_command('build_capi', inplace=self.inplace,
-#                                   build_clib=self.build_lib)
-#         self.run_command("build_capi")
-#         return build_ext.run(self)
-
 
 def add_capi_opts(setup_func):
     import distutils.core
