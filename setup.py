@@ -17,14 +17,11 @@ setup_params = dict(
     description=description,
     long_description=long_description,
     url="https://github.com/Horta/" + name,
-    install_requires=[
-    ],
-    extras_require={
-    },
-    setup_requires=['pytest-runner',
-    ],
-    tests_require=['pytest',
-    ],
+    use_scm_version=True,
+    install_requires=[],
+    extras_require={},
+    setup_requires=['pytest-runner', 'setuptools_scm'],
+    tests_require=['pytest'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

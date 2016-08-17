@@ -8,8 +8,8 @@ def test_build():
     os.chdir(src_path)
 
     try:
-        o = check_output('cd examples/prj_name && python setup.py build',
-                         shell=True)
+        cmd = 'cd build_capi/examples/prj_name && python setup.py build'
+        o = check_output(cmd, shell=True)
         assert(o == 'running build\n')
     finally:
         os.chdir(old_path)
