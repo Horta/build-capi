@@ -18,6 +18,7 @@ def add_capi_opts(setup_func):
         from setuptools import setup
         capi_libs = kwargs.pop('capi_libs', [])
         distutils.core._setup_stop_after = 'commandline'
+
         cmdclass = kwargs.pop('cmdclass', {})
         _build_ext = _process_build_ext(cmdclass.pop('build_ext', build_ext))
         cmdclass['build_ext'] = _build_ext
@@ -33,7 +34,8 @@ def _process_build_ext(klass):
         self.reinitialize_command('build_capi', inplace=self.inplace,
                                   build_clib=self.build_lib)
         self.run_command("build_capi")
-        return build_ext.run(self)
+        return klass.old_run(self)
+    klass.old_run = klass.run
     klass.run = run
     return klass
 
