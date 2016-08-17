@@ -8,7 +8,7 @@ def test_build():
     os.chdir(src_path)
 
     try:
-        cmd = 'cd ../examples/prj_name && python setup.py build'
+        cmd = 'python ../examples/prj_name/setup.py build'
         o = check_output(cmd, shell=True)
         assert(o == 'running build\n')
     finally:
