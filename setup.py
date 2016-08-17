@@ -1,0 +1,45 @@
+import io
+# import sys
+
+import setuptools
+
+with io.open('README.md', encoding='utf-8') as readme:
+    long_description = readme.read()
+
+name = 'build_capi'
+description = 'build C/C++ static libraries (compile/link to build directory)'
+
+setup_params = dict(
+    name=name,
+    author="Danilo Horta",
+    author_email="danilo.horta@gmail.com",
+    description=description,
+    long_description=long_description,
+    url="https://github.com/Horta/" + name,
+    install_requires=[
+    ],
+    extras_require={
+    },
+    setup_requires=[
+    ],
+    tests_require=[
+    ],
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Operating System :: OS Independent",
+        "Framework :: Pytest",
+    ],
+    entry_points={
+        'distutils.commands': [
+            'build_capi = build_capi.build_capi:build_capi',
+            'install_capi = build_capi.install_capi:install_capi',
+        ],
+    },
+)
+if __name__ == '__main__':
+    setuptools.setup(**setup_params)
