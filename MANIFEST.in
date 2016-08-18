@@ -1,4 +1,4 @@
 include *.md
 include *.py
 recursive-include doc Makefile
-recursive-include examples *.py *.c *.h
+recursive-include build_capi/examples *.py *.c *.h
