@@ -1,4 +1,5 @@
 import io
+from io.path import join
 
 import setuptools
 from setuptools import find_packages
@@ -40,6 +41,7 @@ setup_params = dict(
             'install_capi = build_capi.install_capi:install_capi',
         ],
     },
+    package_data={'': [join('build_capi', 'test', '*.py')]},
     include_package_data=True,
 )
 
