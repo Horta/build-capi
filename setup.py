@@ -1,5 +1,5 @@
 import io
-from io.path import join
+from os.path import join
 
 import setuptools
 from setuptools import find_packages
