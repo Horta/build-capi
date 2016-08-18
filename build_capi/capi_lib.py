@@ -1,6 +1,4 @@
 from six import string_types
-from types import ListType
-
 
 class CApiLib(object):
 
@@ -18,7 +16,7 @@ class CApiLib(object):
                  depends=None):
 
         assert isinstance(name, string_types), "'name' must be a string"
-        assert (type(sources) is ListType and
+        assert (isinstance(sources, (tuple, list)) and
                 all([isinstance(s, string_types) for s in sources])), \
             "'sources' must be a list of strings"
 
