@@ -1,0 +1,4 @@
+include *.md
+include *.py
+recursive-include doc Makefile
+recursive-include examples *.py *.c *.h

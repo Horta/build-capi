@@ -20,10 +20,9 @@ setup_params = dict(
     url="https://github.com/Horta/" + name,
     packages=find_packages(),
     zip_safe=False,
-    use_scm_version=True,
     install_requires=[],
     extras_require={},
-    setup_requires=['pytest-runner', 'setuptools_scm'],
+    setup_requires=['pytest-runner'],
     tests_require=['pytest'],
     classifiers=[
         "Development Status :: 3 - Alpha",
