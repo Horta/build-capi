@@ -1,6 +1,7 @@
 import io
 
 import setuptools
+from setuptools import find_packages
 
 with io.open('README.md', encoding='utf-8') as readme:
     long_description = readme.read()
@@ -17,6 +18,8 @@ setup_params = dict(
     description=description,
     long_description=long_description,
     url="https://github.com/Horta/" + name,
+    packages=find_packages(),
+    zip_safe=False,
     use_scm_version=True,
     install_requires=[],
     extras_require={},
@@ -38,6 +41,8 @@ setup_params = dict(
             'install_capi = build_capi.install_capi:install_capi',
         ],
     },
+    include_package_data=True,
 )
+
 if __name__ == '__main__':
     setuptools.setup(**setup_params)
