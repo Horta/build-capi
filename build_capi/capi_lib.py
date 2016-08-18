@@ -1,4 +1,4 @@
-from types import StringType
+from six import string_types
 from types import ListType
 
 
@@ -16,9 +16,10 @@ class CApiLib(object):
                  extra_link_args=None,
                  export_symbols=None,
                  depends=None):
-        assert type(name) is StringType, "'name' must be a string"
+
+        assert isinstance(name, string_types), "'name' must be a string"
         assert (type(sources) is ListType and
-                map(type, sources) == [StringType] * len(sources)), \
+                all([isinstance(s, string_types) for s in sources])), \
             "'sources' must be a list of strings"
 
         self.name = name
