@@ -23,7 +23,7 @@ before_install:
 - wget https://raw.githubusercontent.com/Horta/travis-miniconda/master/install.sh
   -O install.sh
 - chmod +x install.sh
-- ./install.sh
+- bash -x ./install.sh
 install:
 - export PATH="$HOME/miniconda/bin:$PATH"
 - source activate travisci
