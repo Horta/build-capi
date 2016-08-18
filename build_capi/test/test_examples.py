@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from subprocess import check_output
 import sys
 import os
@@ -18,6 +17,6 @@ def test_build():
         e = 'PYTHONPATH=' + e + '$PYTHONPATH'
         cmd = 'cd examples/prj_name/ && env %s python setup.py build' % e
         o = check_output(cmd, shell=True)
-        assert(o == 'running build\n')
+        assert(six.u(o) == b'running build\n')
     finally:
         os.chdir(old_path)
