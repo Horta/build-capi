@@ -43,6 +43,8 @@ setup_params = dict(
 try:
     from distutils.command.bdist_conda import CondaDistribution
 except ImportError:
+    pass
+else:
     setup_params['distclass'] = CondaDistribution
     setup_params['conda_buildnum'] = 1
     setup_params['conda_features'] = ['mkl']
