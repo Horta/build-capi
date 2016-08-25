@@ -7,23 +7,21 @@ from setuptools import find_packages
 with io.open('README.md', encoding='utf-8') as readme:
     long_description = readme.read()
 
-name = 'build_capi'
-description = 'build C/C++ static libraries (compile/link to build directory)'
-
-
 setup_params = dict(
-    name=name,
-    version='0.0.1',
+    name='build_capi',
+    version='0.0.2',
     author="Danilo Horta",
     author_email="danilo.horta@gmail.com",
-    description=description,
+    description='build C/C++ static libraries (compile/link to build' +
+                ' directory)',
     long_description=long_description,
-    url="https://github.com/Horta/" + name,
+    url="https://github.com/Horta/build_capi",
     packages=find_packages(),
     zip_safe=False,
     install_requires=['pytest'],
     extras_require={},
     setup_requires=['pytest', 'pytest-runner'],
+    install_requires=['pytest'],
     tests_require=['pytest'],
     classifiers=[
         "Development Status :: 3 - Alpha",
@@ -43,6 +41,13 @@ setup_params = dict(
     },
     include_package_data=True,
 )
+
+try:
+    from distutils.command.bdist_conda import CondaDistribution
+except ImportError:
+    setup_params['distclass'] = CondaDistribution
+    setup_params['conda_buildnum'] = 1
+    setup_params['conda_features'] = ['mkl']
 
 if __name__ == '__main__':
     setuptools.setup(**setup_params)
