@@ -1,4 +1,1 @@
-include README.md
-include MANIFEST.in
-include setup.cfg
-recursive-include build_capi *.py *.c *.h
+exclude .gitignore .travis.yml
