@@ -1,23 +1,21 @@
 import os
 import sys
-
 from setuptools.command.build_ext import build_ext
+
+
+def error(msg):
+    from distutils.errors import DistutilsSetupError
+    raise DistutilsSetupError(msg)
 
 # import distutils.core
 # distutils.core._setup_stop_after = 'commandline'
 
 from build_capi import CApiLib
 
-try:
-    basestring
-except NameError:
-    # Python 3.x
-    basestring = str
-
 
 def capi_libs(dist, attr, value):
     assert attr == 'capi_libs'
-    if isinstance(value, basestring):
+    if isinstance(value, CApiLib) or callable(value):
         value = [value]
 
     for capi_lib in value:
@@ -30,9 +28,9 @@ def capi_libs(dist, attr, value):
 
 
 def _check_capi_lib(dist, capi_lib):
-    if not isinstance(capi_lib, CApiLib):
-        error("argument to 'capi_libs=...' must be a CApiLib or a list" +
-              " of CApiLib," +
+    if not isinstance(capi_lib, CApiLib) and not callable(capi_lib):
+        error("argument to 'capi_libs=...' must be either a CApiLib or a" +
+              " callable object or a list those," +
               " not %r" % (type(capi_lib).__name__,))
 
 

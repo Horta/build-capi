@@ -67,16 +67,6 @@ class build_capi(Command, object):
         self.build_temp = None
         self.capi_libs = []
 
-        # modules = get_supported_modules()
-        # for module in modules:
-        #     sources = get_sources(module)
-        #     incl = get_include_dirs(module)
-        #     eca = get_extra_compile_args()
-        #     m = get_capi_module_name(module)
-        #     self.capi_libs.append((m, {'sources': sources,
-        #                                'include_dirs': incl,
-        #                                'extra_compile_args': eca}))
-
         # Compilation options for all libraries
         self.include_dirs = None
         self.define = []
@@ -98,11 +88,9 @@ class build_capi(Command, object):
 
         self.capi_libs = self.distribution.capi_libs
 
-        if self.capi_libs:
-            self.check_library_list(self.capi_libs)
-
         if self.include_dirs is None:
             self.include_dirs = self.distribution.include_dirs or []
+
         if isinstance(self.include_dirs, str):
             self.include_dirs = self.include_dirs.split(os.pathsep)
 
@@ -128,25 +116,6 @@ class build_capi(Command, object):
 
         self.build_libraries(self.capi_libs)
 
-    def check_library_list(self, capi_libs):
-        """Ensure that the list of capi_libs is valid.
-
-        `capi_libs` is presumably provided as a command option 'capi_libs'.
-        This method checks that it is a list of `CApiLib`.
-
-        Raise DistutilsSetupError if the structure is invalid anywhere;
-        just returns otherwise.
-        """
-        from distutils.errors import DistutilsSetupError
-        if not isinstance(capi_libs, list):
-            raise DistutilsSetupError("'capi_libs' option must" +
-                                      " be a list of tuples")
-
-        for lib in capi_libs:
-            if not isinstance(lib, CApiLib):
-                raise DistutilsSetupError("each element of 'capi_libs' " +
-                                          "must a CApiLib")
-
     def get_library_names(self):
         # Assume the library list is valid -- 'check_library_list()' is
         # called from 'finalize_options()', so it should be!
@@ -155,27 +124,30 @@ class build_capi(Command, object):
 
         lib_names = []
         for lib in self.capi_libs:
+            if callable(lib):
+                lib = lib()
             lib_names.append(lib.name)
         return lib_names
 
-    def get_source_files(self):
-        from distutils.errors import DistutilsSetupError
-        self.check_library_list(self.capi_libs)
-        filenames = []
-        for (lib_name, build_info) in self.capi_libs:
-            sources = build_info.get('sources')
-            if sources is None or not isinstance(sources, (list, tuple)):
-                raise DistutilsSetupError(
-                    ("in 'libraries' option (library '%s'), "
-                     "'sources' must be present and must be "
-                     "a list of source filenames") % lib_name)
-
-            filenames.extend(sources)
-        return filenames
+    # def get_source_files(self):
+    #     from distutils.errors import DistutilsSetupError
+    #     filenames = []
+    #     for (lib_name, build_info) in self.capi_libs:
+    #         sources = build_info.get('sources')
+    #         if sources is None or not isinstance(sources, (list, tuple)):
+    #             raise DistutilsSetupError(
+    #                 ("in 'libraries' option (library '%s'), "
+    #                  "'sources' must be present and must be "
+    #                  "a list of source filenames") % lib_name)
+    #
+    #         filenames.extend(sources)
+    #     return filenames
 
     def build_libraries(self, capi_libs):
         from distutils.errors import DistutilsSetupError
         for lib in capi_libs:
+            if callable(lib):
+                lib = lib()
             sources = lib.sources
             if sources is None or not isinstance(sources, (list, tuple)):
                 raise DistutilsSetupError(
