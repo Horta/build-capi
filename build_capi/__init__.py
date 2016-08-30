@@ -1,5 +1,4 @@
-from .setuptools_ext import capi_libs
-from .capi_lib import CApiLib
+from .setuptools_ext import CApiLib
 from .build_capi import build_capi
 
 

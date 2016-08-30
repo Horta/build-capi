@@ -1,14 +1,18 @@
 from os.path import join
 from setuptools import setup
 
-from build_capi import CApiLib
 
-mylib = CApiLib('pkg_name.lib.mylib',
-                sources=[join('pkg_name', 'sources', 'example.c')],
-                include_dirs=[join('pkg_name', 'sources')],
-                libraries=['m'],
-                library_dirs=[]
-                )
+def get_lib():
+    from build_capi import CApiLib
+
+    mylib = CApiLib('pkg_name.lib.mylib',
+                    sources=[join('pkg_name', 'sources', 'example.c')],
+                    include_dirs=[join('pkg_name', 'sources')],
+                    libraries=['m'],
+                    library_dirs=[]
+                    )
+
+    return mylib
 
 
 setup_params = dict(
@@ -18,7 +22,7 @@ setup_params = dict(
     description='description',
     long_description='long description',
     setup_requires=['build_capi'],
-    capi_libs=[mylib]
+    capi_libs=[get_lib]
 )
 
 if __name__ == '__main__':

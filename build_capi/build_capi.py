@@ -1,9 +1,6 @@
 import os
 import six
 import string
-from distutils.sysconfig import customize_compiler
-
-from .capi_lib import CApiLib
 from setuptools import Command
 
 if hasattr(bytes, 'maketrans'):
@@ -98,6 +95,7 @@ class build_capi(Command, object):
         if not self.capi_libs:
             return
 
+        from distutils.sysconfig import customize_compiler
         from distutils.ccompiler import new_compiler
         self.compiler = new_compiler(compiler=self.compiler,
                                      dry_run=self.dry_run,
