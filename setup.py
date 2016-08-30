@@ -9,7 +9,7 @@ with io.open('README.md', encoding='utf-8') as readme:
 
 setup_params = dict(
     name='build_capi',
-    version='0.0.6',
+    version='0.0.7',
     author="Danilo Horta",
     author_email="danilo.horta@gmail.com",
     description='build C/C++ static libraries (compile/link to build' +
@@ -34,6 +34,9 @@ setup_params = dict(
     entry_points={
         'distutils.commands': [
             'build_capi = build_capi.build_capi:build_capi',
+        ],
+        'distutils.setup_keywords': [
+            'capi_libs = build_capi.setuptools_ext:capi_libs',
         ],
     },
     include_package_data=True,

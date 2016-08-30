@@ -1,7 +1,6 @@
 from os.path import join
 from setuptools import setup
-from build_capi import add_capi_opts
-setup = add_capi_opts(setup)
+
 from build_capi import CApiLib
 
 mylib = CApiLib('pkg_name.lib.mylib',

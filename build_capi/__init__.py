@@ -1,6 +1,7 @@
-from .setup import add_capi_opts
+from .setuptools_ext import capi_libs
 from .capi_lib import CApiLib
 from .build_capi import build_capi
+
 
 def test():
     import os
