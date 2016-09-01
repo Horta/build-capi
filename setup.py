@@ -9,7 +9,7 @@ with io.open('README.md', encoding='utf-8') as readme:
 
 setup_params = dict(
     name='build_capi',
-    version='0.0.8',
+    version='0.1.0',
     author="Danilo Horta",
     author_email="danilo.horta@gmail.com",
     description='build C/C++ static libraries (compile/link to build' +
@@ -19,10 +19,10 @@ setup_params = dict(
     packages=find_packages(),
     zip_safe=False,
     setup_requires=['pytest-runner'],
-    tests_require=['pytest'],
-    install_requires=['pytest'],
+    install_requires=['pytest', 'six'],
+    tests_require=install_requires,
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 2.7",
