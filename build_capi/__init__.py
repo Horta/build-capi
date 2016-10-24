@@ -1,6 +1,15 @@
+from __future__ import absolute_import
+
+from pkg_resources import get_distribution
+from pkg_resources import DistributionNotFound
+
 from .setuptools_ext import CApiLib
 from .build_capi import build_capi
 
+try:
+    __version__ = get_distribution('build_capi').version
+except DistributionNotFound:
+    __version__ = 'unknown'
 
 def test():
     import os
@@ -10,8 +19,11 @@ def test():
     os.chdir(src_path)
 
     try:
-        return_code = __import__('pytest').main([])
+        return_code = __import__('pytest').main(['-q'])
     finally:
         os.chdir(old_path)
+
+    if return_code == 0:
+        print("Congratulations. All tests have passed!")
 
     return return_code
