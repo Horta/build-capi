@@ -47,3 +47,5 @@ deploy:
   on:
     distributions: sdist bdist_wheel
     repo: Horta/build_capi
+notifications:
+  email: false
