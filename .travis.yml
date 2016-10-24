@@ -39,3 +39,11 @@ script:
 branches:
   only:
   - master
+deploy:
+  provider: pypi
+  user: dhorta
+  password:
+    secure: IqDUlgI4G8gKGWnWQQbvaOiXl89ceZscU6JKdaznhYTIzXOg3DJPGwQEduV1AdLpEcX8cE5d7gyY/EQpqQBV7thF+rBC7FitfvXCQJPuCKocgWQyEowH+N+0WTqnChaOrPUUjrYhRvNkr+Zm1n1qaR+wXn78mbeZvfOqVYwNF71UqdWr1AhC8LlUYirpkuHEY4YlqiQfwXXlj90TkEYfS9G6dZoZUqD+ErV86u/rOxMIWNeKxV5Qst3ZbYktS2nzWvaSyFGwPTwcxMdmBEPVOFJ8SpTH8HqXcxDxDkNkS5E0bN9jHiXDKuCqDxNhIKKOP5Mbz0ka9lhnWdwVOvRwcmxXv1E549+9+Qq6QNgMVjj/mgBjy2TxG+hNUWXhJi27HUAHCg8lwMy5Dy9KeM4Oa7/N5nL0EyEcJgLKcjGNAwIBhHe/CzaHs6Qu90Fl7EjP571DqPaizTT7mDNL/JFkWDST8/vvj1h/QN6H5i2d8Z8J/Kyd4OpRKwYhJF9wyH2qr+onaCVXkvofIH/+vveRm+/9y4F73sqeUkRsbC7VBgZ7S0DhuvBeY5BtJDX9HksJnIak2X8MJ8/xqe+x4cEkY6ikma4UrXmbEGl3Fz/gTaKurNsLLTafptPIb3a9sQ0mJYfRU9Zy32S5GwGcj3D9o0P3Tpn+QgoRiOhpybGa7CM=
+  on:
+    distributions: sdist bdist_wheel
+    repo: Horta/build_capi
