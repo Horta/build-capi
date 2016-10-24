@@ -27,7 +27,7 @@ class CApiLib(object):
         assert isinstance(name, string_types), "'name' must be a string"
         assert (isinstance(sources, (tuple, list)) and
                 all([isinstance(s, string_types) for s in sources])), \
-            "'sources' must be a list of strings"
+             "'sources' must be a list of strings"
 
         self.name = name
         self.sources = sources
