@@ -22,8 +22,7 @@ def setup_package():
         version='1.0.4',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
-        description='build C/C++ static libraries (compile/link to build' +
-                    ' directory)',
+        description='build and distribute C/C++ static libraries',
         license="MIT",
         url='http://github.com/Horta/build_capi',
         packages=find_packages(),
