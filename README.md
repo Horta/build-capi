@@ -28,6 +28,7 @@ You can have a ``setup.py`` similar to
                                                        'example.h'))],
 ...     package_data={'': [join('pkg_name', 'lib', '*.*')]},
 ... )
+...
 ```
 
 and then have a ``pkg_name/__init__.py``

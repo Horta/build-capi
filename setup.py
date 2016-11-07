@@ -19,7 +19,7 @@ def setup_package():
 
     metadata = dict(
         name='build_capi',
-        version='1.0.3',
+        version='1.0.4',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='build C/C++ static libraries (compile/link to build' +
