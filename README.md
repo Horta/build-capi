@@ -23,7 +23,11 @@ You can have a ``setup.py`` similar to
 ...     name='pkg_name',
 ...     # ...
 ...     setup_requires=['build_capi'],
-...     capi_libs=[get_lib]
+...     capi_libs=[get_lib],
+...     include_package_data=True,
+...     data_files=[(join('pkg_name', 'include'), join('pkg_name', 'include',
+                                                       'example.h'))],
+...     package_data={'': [join('pkg_name', 'lib', '*.*')]},
 ... )
 ```
 
