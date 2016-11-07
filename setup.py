@@ -14,12 +14,12 @@ def setup_package():
     pytest_runner = ['pytest-runner'] if needs_pytest else []
 
     setup_requires = pytest_runner
-    install_requires = ['six']
+    install_requires = ['six', 'pytest']
     tests_require = install_requires
 
     metadata = dict(
         name='build_capi',
-        version='1.0.2',
+        version='1.0.3',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='build C/C++ static libraries (compile/link to build' +
