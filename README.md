@@ -17,7 +17,7 @@ You can have a ``setup.py`` similar to
 ...                      sources=[join('pkg_name', 'sources', 'example.c')],
 ...                      include_dirs=[join('pkg_name', 'include')]
 ...      )
->>>
+...
 >>> setup(
 ...     name='pkg_name',
 ...     # ...
@@ -38,7 +38,6 @@ and then have a ``pkg_name/__init__.py``
 ...     from os.path import join, dirname
 ...     return join(dirname(pkg_name.__file__), 'include')
 ...
->>>
 >>> def get_lib():
 ...     import pkg_name
 ...     from os.path import join, dirname
