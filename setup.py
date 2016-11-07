@@ -14,15 +14,15 @@ def setup_package():
     pytest_runner = ['pytest-runner'] if needs_pytest else []
 
     setup_requires = pytest_runner
-    install_requires = ['six', 'pytest']
-    tests_require = install_requires
+    install_requires = ['six']
+    tests_require = ['pytest']
 
     metadata = dict(
         name='build_capi',
-        version='1.0.4',
+        version='1.0.5',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
-        description='build and distribute C/C++ static libraries',
+        description='Build and distribute C/C++ static libraries',
         license="MIT",
         url='http://github.com/Horta/build_capi',
         packages=find_packages(),
