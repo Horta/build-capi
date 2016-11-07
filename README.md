@@ -13,11 +13,10 @@ You can have a ``setup.py`` similar to
 >>> def get_lib():
 ...     from build_capi import CApiLib
 >>>
->>> mylib = CApiLib('pkg_name.lib.nmylib',
-...                   sources=[join('pkg_name', 'sources', 'example.c')],
-...                   include_dirs=[join('pkg_name', 'include')]
+>>>      mylib = CApiLib('pkg_name.lib.nmylib',
+...                      sources=[join('pkg_name', 'sources', 'example.c')],
+...                      include_dirs=[join('pkg_name', 'include')]
 ... )
->>>
 >>>
 >>> setup(
 ...     name='pkg_name',
