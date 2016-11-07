@@ -16,7 +16,7 @@ You can have a ``setup.py`` similar to
 >>>      mylib = CApiLib('pkg_name.lib.nmylib',
 ...                      sources=[join('pkg_name', 'sources', 'example.c')],
 ...                      include_dirs=[join('pkg_name', 'include')]
-... )
+...      )
 >>>
 >>> setup(
 ...     name='pkg_name',
