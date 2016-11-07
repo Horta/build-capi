@@ -8,7 +8,7 @@ def get_lib():
     mylib = CApiLib('pkg_name.lib.nmylib',
                     sources=[join('pkg_name', 'sources', 'example.c')],
                     include_dirs=[join('pkg_name', 'include')]
-                    )
+    )
 
     return mylib
 
