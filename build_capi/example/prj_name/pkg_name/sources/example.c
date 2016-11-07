@@ -1,4 +1,4 @@
-#include "example.h"
+#include "pkg_name/example.h"
 
 double sum(double a, double b)
 {

@@ -5,11 +5,9 @@ from setuptools import setup
 def get_lib():
     from build_capi import CApiLib
 
-    mylib = CApiLib('pkg_name.lib.mylib',
+    mylib = CApiLib('pkg_name.lib.nmylib',
                     sources=[join('pkg_name', 'sources', 'example.c')],
-                    include_dirs=[join('pkg_name', 'sources')],
-                    libraries=['m'],
-                    library_dirs=[]
+                    include_dirs=[join('pkg_name', 'include')]
                     )
 
     return mylib
