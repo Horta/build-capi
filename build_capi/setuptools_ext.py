@@ -1,5 +1,11 @@
+from __future__ import unicode_literals
+
 from setuptools.command.build_ext import build_ext
-from builtins import str
+
+try:
+    from builtins import str
+except ImportError:
+    from __builtins__ import str
 
 def error(msg):
     from distutils.errors import DistutilsSetupError
