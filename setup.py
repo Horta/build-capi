@@ -24,7 +24,7 @@ def setup_package():
 
     metadata = dict(
         name='build_capi',
-        version='1.0.6',
+        version='1.0.7',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='Build and distribute C/C++ static libraries',
@@ -47,10 +47,10 @@ def setup_package():
         ],
         entry_points={
             'distutils.commands': [
-                'build_capi = build_capi.build_capi:build_capi',
+                'build_capi = build_capi._build_capi:build_capi',
             ],
             'distutils.setup_keywords': [
-                'capi_libs = build_capi.setuptools_ext:capi_libs',
+                'capi_libs = build_capi._setuptools_ext:capi_libs',
             ],
         },
     )
