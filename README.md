@@ -62,14 +62,6 @@ An alternative way would be via pip
 pip install build_capi
 ```
 
-## Running the tests
-
-After installation, you can test it
-```
-python -c "import build_capi; build_capi.test()"
-```
-as long as you have [pytest](http://docs.pytest.org/en/latest/).
-
 ## Authors
 
 * **Danilo Horta** - [https://github.com/Horta](https://github.com/Horta)
