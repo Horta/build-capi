@@ -30,7 +30,7 @@ def setup_package():
         description='Build and distribute C/C++ static libraries',
         long_description=long_description,
         license="MIT",
-        url='http://github.com/Horta/build_capi',
+        url='http://github.com/Horta/build-capi',
         packages=find_packages(),
         zip_safe=False,
         install_requires=install_requires,
