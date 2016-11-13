@@ -18,7 +18,6 @@ def test_build():
         e = 'PYTHONPATH=' + e + '$PYTHONPATH'
         cmd = 'cd ../example/prj_name/ && env %s python setup.py build' % e
         o = check_output(cmd, shell=True, universal_newlines=True)
-        print(o)
-        # assert(o == 'running build\n')
+        assert('running build' in o)
     finally:
         os.chdir(old_path)
