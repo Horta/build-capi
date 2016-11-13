@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 
 import os
+import sys
+PY3 = sys.version_info > (3,)
 from setuptools import Command
 
 from ._unicode import unicode_airlock
@@ -149,11 +151,11 @@ class build_capi(Command, object):
                                             debug=self.debug,
                                             extra_preargs=eca)
 
-            lib_name = self.get_ext_fullpath(lib.name)
+            lib_name = ascii_airlock(self.get_ext_fullpath(lib.name))
             objects = [ascii_airlock(o) for o in objects]
-            lib_name = ascii_airlock(lib_name)
+            output_dir = './' if PY3 else b'./'
             self.compiler.create_static_lib(objects, lib_name,
-                                            output_dir=b'./',
+                                            output_dir=output_dir,
                                             debug=self.debug)
 
     def get_ext_fullpath(self, ext_name):
