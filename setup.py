@@ -47,10 +47,10 @@ def setup_package():
         ],
         entry_points={
             'distutils.commands': [
-                'build_capi = build_capi._build_capi:build_capi',
+                'build_capi = build_capi.build:build_capi',
             ],
             'distutils.setup_keywords': [
-                'capi_libs = build_capi._setuptools_ext:capi_libs',
+                'capi_libs = build_capi.ext:capi_libs',
             ],
         },
     )
