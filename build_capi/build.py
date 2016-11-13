@@ -5,6 +5,8 @@ import sys
 import string
 from setuptools import Command
 
+from ._unicode import unicode_airlock
+
 PY3 = sys.version_info > (3,)
 
 def maketrans(x, *args):
@@ -129,20 +131,6 @@ class build_capi(Command, object):
             lib_names.append(lib.name)
         return lib_names
 
-    # def get_source_files(self):
-    #     from distutils.errors import DistutilsSetupError
-    #     filenames = []
-    #     for (lib_name, build_info) in self.capi_libs:
-    #         sources = build_info.get('sources')
-    #         if sources is None or not isinstance(sources, (list, tuple)):
-    #             raise DistutilsSetupError(
-    #                 ("in 'libraries' option (library '%s'), "
-    #                  "'sources' must be present and must be "
-    #                  "a list of source filenames") % lib_name)
-    #
-    #         filenames.extend(sources)
-    #     return filenames
-
     def build_libraries(self, capi_libs):
         from distutils.errors import DistutilsSetupError
         for lib in capi_libs:
@@ -154,7 +142,7 @@ class build_capi(Command, object):
                     ("in 'libraries' option (library '%s'), " +
                      "'sources' must be present and must be " +
                      "a list of source filenames") % lib.name)
-            sources = list(sources)
+            sources = [unicode_airlock(s) for s in sources]
 
             from distutils import log
             log.info("building '%s' library", lib.name)
@@ -186,6 +174,7 @@ class build_capi(Command, object):
         The file is located in `build_lib` or directly in the package
         (inplace option).
         """
+        ext_name = unicode_airlock(ext_name)
         # makes sure the extension name is only using dots
         all_dots = maketrans('/' + os.sep, '..')
         ext_name = ext_name.translate(all_dots)
