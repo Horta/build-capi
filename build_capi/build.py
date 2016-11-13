@@ -151,9 +151,14 @@ class build_capi(Command, object):
                                             debug=self.debug,
                                             extra_preargs=eca)
 
-            lib_name = ascii_airlock(self.get_ext_fullpath(lib.name))
-            objects = [ascii_airlock(o) for o in objects]
-            output_dir = './' if PY3 else b'./'
+            if PY3:
+                lib_name = unicode_airlock(self.get_ext_fullpath(lib.name))
+                objects = [unicode_airlock(o) for o in objects]
+                output_dir = u'./'
+            else:
+                lib_name = ascii_airlock(self.get_ext_fullpath(lib.name))
+                objects = [ascii_airlock(o) for o in objects]
+                output_dir = b'./'
             self.compiler.create_static_lib(objects, lib_name,
                                             output_dir=output_dir,
                                             debug=self.debug)
