@@ -139,9 +139,6 @@ class build_capi(Command, object):
             from distutils import log
             log.info("building '%s' library", lib.name)
 
-            # First, compile the source code to object files in the library
-            # directory.  (This should probably change to putting object
-            # files in a temporary build directory.)
             macros = lib.define_macros
             include_dirs = lib.include_dirs
             eca = lib.extra_compile_args
