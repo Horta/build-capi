@@ -5,7 +5,7 @@ from setuptools.command.build_ext import build_ext
 try:
     from builtins import str
 except ImportError:
-    from __builtins__ import str
+    pass
 
 def error(msg):
     from distutils.errors import DistutilsSetupError
