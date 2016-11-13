@@ -1,18 +1,10 @@
 from __future__ import unicode_literals
 
 import os
-import sys
-import string
 from setuptools import Command
 
 from ._unicode import unicode_airlock
-
-PY3 = sys.version_info > (3,)
-
-def maketrans(x, *args):
-    if PY3:
-        return x.maketrans(x, *args)
-    return string.maketrans(x, *args)
+from ._unicode import ascii_airlock
 
 def _show_compilers():
     from distutils.ccompiler import show_compilers as sc
@@ -160,12 +152,11 @@ class build_capi(Command, object):
                                             debug=self.debug,
                                             extra_preargs=eca)
 
-            # Now "link" the object files together into a static library.
-            # (On Unix at least, this isn't really linking -- it just
-            # builds an archive.  Whatever.)
             lib_name = self.get_ext_fullpath(lib.name)
+            objects = [ascii_airlock(o) for o in objects]
+            lib_name = ascii_airlock(lib_name)
             self.compiler.create_static_lib(objects, lib_name,
-                                            output_dir='./',
+                                            output_dir=b'./',
                                             debug=self.debug)
 
     def get_ext_fullpath(self, ext_name):
@@ -175,10 +166,6 @@ class build_capi(Command, object):
         (inplace option).
         """
         ext_name = unicode_airlock(ext_name)
-        # makes sure the extension name is only using dots
-        all_dots = maketrans('/' + os.sep, '..')
-        ext_name = ext_name.translate(all_dots)
-
         fullname = self.get_ext_fullname(ext_name)
         modpath = fullname.split('.')
         filename = self.get_ext_filename(ext_name)
