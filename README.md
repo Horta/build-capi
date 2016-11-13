@@ -1,64 +1,66 @@
-# build_capi
+# build-capi
 
-Build and distribute C/C++ static libraries via Python packages
+[![PyPIl](https://img.shields.io/pypi/l/build-capi.svg?style=flat-square)](https://pypi.python.org/pypi/build-capi/)
+[![PyPIv](https://img.shields.io/pypi/v/build-capi.svg?style=flat-square)](https://pypi.python.org/pypi/build-capi/)
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/ndarray_listener/badges/version.svg)](https://anaconda.org/conda-forge/ndarray_listener)
+[![Documentation Status](https://readthedocs.org/projects/build-capi/badge/?style=flat-square&version=latest)](http://build-capi.readthedocs.io/en/latest/?badge=latest)
+
+Build and distribute C/C++ static libraries via Python packages.
 
 ## Getting Started
 
 You can have a ``setup.py`` similar to
 
 ```python
->>> from os.path import join
->>> from setuptools import setup
->>>
->>> def get_lib():
-...     from build_capi import CApiLib
->>>
->>>      mylib = CApiLib('pkg_name.lib.nmylib',
-...                      sources=[join('pkg_name', 'sources', 'example.c')],
-...                      include_dirs=[join('pkg_name', 'include')]
-...      )
-...
->>> setup(
-...     name='pkg_name',
-...     # ...
-...     setup_requires=['build_capi'],
-...     capi_libs=[get_lib],
-...     include_package_data=True,
-...     data_files=[(join('pkg_name', 'include'), join('pkg_name', 'include',
-                                                       'example.h'))],
-...     package_data={'': [join('pkg_name', 'lib', '*.*')]},
-... )
-...
+from os.path import join
+from setuptools import setup
+
+def get_lib():
+  from build_capi import CApiLib
+
+  mylib = CApiLib('pkg_name.lib.nmylib',
+                  sources=[join('pkg_name', 'sources', 'example.c')],
+                  include_dirs=[join('pkg_name', 'include')])
+
+setup(
+      name='pkg_name',
+      # ...
+      setup_requires=['build_capi'],
+      capi_libs=[get_lib],
+      include_package_data=True,
+      data_files=[(join('pkg_name', 'include'), join('pkg_name', 'include',
+                                                     'example.h'))],
+      package_data={'': [join('pkg_name', 'lib', '*.*')]})
 ```
 
 and then have a ``pkg_name/__init__.py``
 
 ```python
->>> def get_include():
-...     import pkg_name
-...     from os.path import join, dirname
-...     return join(dirname(pkg_name.__file__), 'include')
-...
->>> def get_lib():
-...     import pkg_name
-...     from os.path import join, dirname
-...     return join(dirname(pkg_name.__file__), 'lib')
-...
+def get_include():
+  import pkg_name
+  from os.path import join, dirname
+  return join(dirname(pkg_name.__file__), 'include')
+
+def get_lib():
+  import pkg_name
+  from os.path import join, dirname
+  return join(dirname(pkg_name.__file__), 'lib')
 ```
 
 Please, refer to [build_capi/example/prj_name](build_capi/example/prj_name)
 for a minimal example of project using ``build_capi``.
 
-### Installing
+## Install
 
-Via pip
-```
-pip install build_capi
-```
-
-or via [Conda](http://conda.pydata.org/docs/index.html)
-```
+The recommended way of installing it is via
+[conda](http://conda.pydata.org/docs/index.html)
+```bash
 conda install -c conda-forge build_capi
+```
+
+An alternative way would be via pip
+```bash
+pip install build_capi
 ```
 
 ## Running the tests
@@ -67,6 +69,7 @@ After installation, you can test it
 ```
 python -c "import build_capi; build_capi.test()"
 ```
+as long as you have [pytest](http://docs.pytest.org/en/latest/).
 
 ## Authors
 

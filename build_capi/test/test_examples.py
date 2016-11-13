@@ -1,7 +1,8 @@
+from __future__ import unicode_literals
+
 from subprocess import check_output
 import sys
 import os
-import six
 
 def test_build():
     path_ = __import__('build_capi').__path__[0]
@@ -16,7 +17,7 @@ def test_build():
             e += '%s:' % p
         e = 'PYTHONPATH=' + e + '$PYTHONPATH'
         cmd = 'cd example/prj_name/ && env %s python setup.py build' % e
-        o = check_output(cmd, shell=True)
-        assert(six.u(o) == b'running build\n')
+        o = check_output(cmd, shell=True, universal_newlines=True)
+        assert(o == 'running build\n')
     finally:
         os.chdir(old_path)

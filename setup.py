@@ -3,6 +3,11 @@ import sys
 from setuptools import setup
 from setuptools import find_packages
 
+try:
+    import pypandoc
+    long_description = pypandoc.convert('README.md', 'rst')
+except(IOError, ImportError):
+    long_description = open('README.md').read()
 
 def setup_package():
     src_path = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -14,7 +19,7 @@ def setup_package():
     pytest_runner = ['pytest-runner'] if needs_pytest else []
 
     setup_requires = pytest_runner
-    install_requires = ['six']
+    install_requires = []
     tests_require = ['pytest']
 
     metadata = dict(
@@ -23,6 +28,7 @@ def setup_package():
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='Build and distribute C/C++ static libraries',
+        long_description=long_description,
         license="MIT",
         url='http://github.com/Horta/build_capi',
         packages=find_packages(),
@@ -38,7 +44,6 @@ def setup_package():
             "Programming Language :: Python :: 3.4",
             "Programming Language :: Python :: 3.5",
             "Operating System :: OS Independent",
-            "Framework :: Pytest",
         ],
         entry_points={
             'distutils.commands': [

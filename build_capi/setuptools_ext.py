@@ -1,8 +1,5 @@
-import os
-import sys
-from six import string_types
 from setuptools.command.build_ext import build_ext
-
+from builtins import str
 
 def error(msg):
     from distutils.errors import DistutilsSetupError
@@ -24,9 +21,9 @@ class CApiLib(object):
                  export_symbols=None,
                  depends=None):
 
-        assert isinstance(name, string_types), "'name' must be a string"
+        assert isinstance(name, str), "'name' must be a string"
         assert (isinstance(sources, (tuple, list)) and
-                all([isinstance(s, string_types) for s in sources])), \
+                all([isinstance(s, str) for s in sources])), \
              "'sources' must be a list of strings"
 
         self.name = name
@@ -50,7 +47,7 @@ def capi_libs(dist, attr, value):
         value = [value]
 
     for capi_lib in value:
-        _check_capi_lib(dist, capi_lib)
+        _check_capi_lib(capi_lib)
 
     cmdclass = dist.cmdclass
     _build_ext = _process_build_ext(cmdclass.pop('build_ext', build_ext))
@@ -58,7 +55,7 @@ def capi_libs(dist, attr, value):
     dist.cmdclass = cmdclass
 
 
-def _check_capi_lib(dist, capi_lib):
+def _check_capi_lib(capi_lib):
     if not isinstance(capi_lib, CApiLib) and not callable(capi_lib):
         error("argument to 'capi_libs=...' must be either a CApiLib or a" +
               " callable object or a list those," +

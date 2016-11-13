@@ -1,18 +1,20 @@
+from __future__ import unicode_literals
+
 import os
-import six
+import sys
 import string
 from setuptools import Command
 
-if hasattr(bytes, 'maketrans'):
-    maketrans = bytes.maketrans
-else:
-    maketrans = string.maketrans
+PY3 = sys.version_info > (3,)
 
+def maketrans(x, *args):
+    if PY3:
+        return x.maketrans(x, *args)
+    return string.maketrans(x, *args)
 
 def _show_compilers():
     from distutils.ccompiler import show_compilers as sc
     sc()
-
 
 class build_capi(Command, object):
 
@@ -185,7 +187,7 @@ class build_capi(Command, object):
         (inplace option).
         """
         # makes sure the extension name is only using dots
-        all_dots = maketrans(six.b('/' + os.sep), six.b('..'))
+        all_dots = maketrans('/' + os.sep, '..')
         ext_name = ext_name.translate(all_dots)
 
         fullname = self.get_ext_fullname(ext_name)
