@@ -2,11 +2,6 @@ from __future__ import unicode_literals
 
 from setuptools.command.build_ext import build_ext
 
-try:
-    from builtins import str
-except ImportError:
-    pass
-
 def error(msg):
     from distutils.errors import DistutilsSetupError
     raise DistutilsSetupError(msg)
@@ -26,11 +21,6 @@ class CApiLib(object):
                  extra_link_args=None,
                  export_symbols=None,
                  depends=None):
-
-        assert isinstance(name, str), "'name' must be a string"
-        assert (isinstance(sources, (tuple, list)) and
-                all([isinstance(s, str) for s in sources])), \
-             "'sources' must be a list of strings"
 
         self.name = name
         self.sources = sources
