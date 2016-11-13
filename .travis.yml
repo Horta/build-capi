@@ -34,7 +34,7 @@ script:
 - python setup.py sdist
 - pip install dist/`ls dist | grep -i -E '\.(gz)$' | head -1`
 - pushd /
-- python -c "import build_capi; build_capi.test()"
+- python -c "import build_capi"
 - popd
 branches:
   only:
