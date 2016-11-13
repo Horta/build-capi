@@ -3,7 +3,6 @@
 [![PyPIl](https://img.shields.io/pypi/l/build-capi.svg?style=flat-square)](https://pypi.python.org/pypi/build-capi/)
 [![PyPIv](https://img.shields.io/pypi/v/build-capi.svg?style=flat-square)](https://pypi.python.org/pypi/build-capi/)
 [![Anaconda-Server Badge](https://anaconda.org/conda-forge/build-capi/badges/version.svg)](https://anaconda.org/conda-forge/build-capi)
-[![Documentation Status](https://readthedocs.org/projects/build-capi/badge/?style=flat-square&version=latest)](http://build-capi.readthedocs.io/en/latest/?badge=latest)
 
 Build and distribute C/C++ static libraries via Python packages.
 
