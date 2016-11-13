@@ -16,7 +16,7 @@ def test_build():
         for p in ps:
             e += '%s:' % p
         e = 'PYTHONPATH=' + e + '$PYTHONPATH'
-        cmd = 'cd example/prj_name/ && env %s python setup.py build' % e
+        cmd = 'cd ../example/prj_name/ && env %s python setup.py build' % e
         o = check_output(cmd, shell=True, universal_newlines=True)
         assert(o == 'running build\n')
     finally:
