@@ -4,7 +4,7 @@ from pkg_resources import get_distribution as _get_distribution
 from pkg_resources import DistributionNotFound as _DistributionNotFound
 
 from .ext import CApiLib
-from .capi import build_capi
+from .build import build_capi
 
 try:
     __version__ = _get_distribution('build_capi').version
