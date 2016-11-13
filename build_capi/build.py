@@ -144,8 +144,18 @@ class build_capi(Command, object):
             macros = lib.define_macros
             include_dirs = lib.include_dirs
             eca = lib.extra_compile_args
+            if PY3:
+                sources = [unicode_airlock(s) for s in sources]
+                output_dir = unicode_airlock(self.build_temp)
+                include_dirs = [unicode_airlock(incd) for incd in include_dirs]
+                macros = [unicode_airlock(m) for m in macros]
+            else:
+                sources = [ascii_airlock(s) for s in sources]
+                output_dir = ascii_airlock(self.build_temp)
+                include_dirs = [ascii_airlock(incd) for incd in include_dirs]
+                macros = [ascii_airlock(m) for m in macros]
             objects = self.compiler.compile(sources,
-                                            output_dir=self.build_temp,
+                                            output_dir=output_dir,
                                             macros=macros,
                                             include_dirs=include_dirs,
                                             debug=self.debug,
