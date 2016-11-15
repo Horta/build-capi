@@ -26,7 +26,7 @@ class CApiLib(object):
                  export_symbols=None,
                  depends=None):
 
-        _make_sure_folder_exist(os.path.join(name.split('.')))
+        _make_sure_folder_exist(os.path.join(*name.split('.')))
         self.name = name
         self.sources = sources
         self.include_dirs = include_dirs or []
