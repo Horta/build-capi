@@ -7,10 +7,6 @@ def error(msg):
     from distutils.errors import DistutilsSetupError
     raise DistutilsSetupError(msg)
 
-def _make_sure_folder_exist(folder):
-    if not os.path.exists(folder):
-        os.makedirs(folder)
-
 class CApiLib(object):
 
     def __init__(self, name, sources,
@@ -26,7 +22,6 @@ class CApiLib(object):
                  export_symbols=None,
                  depends=None):
 
-        _make_sure_folder_exist(os.path.join(*name.split('.')))
         self.name = name
         self.sources = sources
         self.include_dirs = include_dirs or []
