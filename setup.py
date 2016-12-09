@@ -23,8 +23,8 @@ def setup_package():
     tests_require = ['pytest']
 
     metadata = dict(
-        name='build_capi',
-        version='1.1.8',
+        name='build-capi',
+        version='1.1.9',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='Build and distribute C/C++ static libraries',

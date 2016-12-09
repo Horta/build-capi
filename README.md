@@ -2,7 +2,7 @@
 
 [![PyPIl](https://img.shields.io/pypi/l/build-capi.svg?style=flat-square)](https://pypi.python.org/pypi/build-capi/)
 [![PyPIv](https://img.shields.io/pypi/v/build-capi.svg?style=flat-square)](https://pypi.python.org/pypi/build-capi/)
-[![Anaconda-Server Badge](https://anaconda.org/conda-forge/build_capi/badges/version.svg)](https://anaconda.org/conda-forge/build_capi)
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/build-capi/badges/version.svg)](https://anaconda.org/conda-forge/build-capi)
 
 Build and distribute C/C++ static libraries via Python packages.
 
@@ -54,12 +54,12 @@ for a minimal example of project using ``build_capi``.
 The recommended way of installing it is via
 [conda](http://conda.pydata.org/docs/index.html)
 ```bash
-conda install -c conda-forge build_capi
+conda install -c conda-forge build-capi
 ```
 
 An alternative way would be via pip
 ```bash
-pip install build_capi
+pip install build-capi
 ```
 
 ## Authors
