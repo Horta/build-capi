@@ -24,13 +24,13 @@ def setup_package():
 
     metadata = dict(
         name='build-capi',
-        version='1.1.10dev0',
+        version='1.1.10dev1',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='Build and distribute C/C++ static libraries',
         long_description=long_description,
         license="MIT",
-        url='http://github.com/Horta/build-capi',
+        url='http://github.com/glimix/build-capi',
         packages=find_packages(),
         zip_safe=False,
         install_requires=install_requires,
