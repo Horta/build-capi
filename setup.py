@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 try:
     import pypandoc
-    long_description = pypandoc.convert('README.md', 'rst')
+    long_description = pypandoc.convert_file('README.md', 'rst')
 except(IOError, ImportError):
     long_description = open('README.md').read()
 
@@ -24,7 +24,7 @@ def setup_package():
 
     metadata = dict(
         name='build-capi',
-        version='1.1.9',
+        version='1.1.10dev0',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='Build and distribute C/C++ static libraries',
