@@ -1,13 +1,14 @@
 import os
 import sys
-from setuptools import setup
-from setuptools import find_packages
+
+from setuptools import find_packages, setup
 
 try:
     import pypandoc
     long_description = pypandoc.convert_file('README.md', 'rst')
-except(IOError, ImportError):
+except (IOError, ImportError):
     long_description = open('README.md').read()
+
 
 def setup_package():
     src_path = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -24,7 +25,7 @@ def setup_package():
 
     metadata = dict(
         name='build-capi',
-        version='1.1.10dev1',
+        version='1.1.10dev2',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='Build and distribute C/C++ static libraries',
@@ -52,23 +53,14 @@ def setup_package():
             'distutils.setup_keywords': [
                 'capi_libs = build_capi.ext:capi_libs',
             ],
-        },
-    )
-
-    try:
-        from distutils.command.bdist_conda import CondaDistribution
-    except ImportError:
-        pass
-    else:
-        metadata['distclass'] = CondaDistribution
-        metadata['conda_buildnum'] = 1
-        metadata['conda_features'] = ['mkl']
+        }, )
 
     try:
         setup(**metadata)
     finally:
         del sys.path[0]
         os.chdir(old_path)
+
 
 if __name__ == '__main__':
     setup_package()
