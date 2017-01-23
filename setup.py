@@ -25,7 +25,7 @@ def setup_package():
 
     metadata = dict(
         name='build-capi',
-        version='1.1.10.rc0',
+        version='1.1.10.rc1',
         maintainer="Danilo Horta",
         maintainer_email="horta@ebi.ac.uk",
         description='Build and distribute C/C++ static libraries',
@@ -42,7 +42,6 @@ def setup_package():
             "Intended Audience :: Developers",
             "License :: OSI Approved :: MIT License",
             "Programming Language :: Python :: 2.7",
-            "Programming Language :: Python :: 3.4",
             "Programming Language :: Python :: 3.5",
             "Programming Language :: Python :: 3.6",
             "Operating System :: OS Independent",

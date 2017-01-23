@@ -11,11 +11,11 @@ matrix:
   - os: linux
     sudo: false
     dist: trusty
-    python: '3.4'
+    python: '3.5'
   - os: linux
     sudo: false
     dist: trusty
-    python: '3.5'
+    python: '3.6'
 script:
 - pip install pypandoc
 - python setup.py sdist
