@@ -31,7 +31,7 @@ def setup_package():
         description='Build and distribute C/C++ static libraries',
         long_description=long_description,
         license="MIT",
-        url='http://github.com/glimix/build-capi',
+        url='http://github.com/limix/build-capi',
         packages=find_packages(),
         zip_safe=False,
         install_requires=install_requires,
